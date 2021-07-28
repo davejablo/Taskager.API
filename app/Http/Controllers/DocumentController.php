@@ -6,6 +6,7 @@ use App\Document;
 use App\Http\Requests\Document\StoreDocumentRequest;
 use App\Http\Requests\Document\UpdateDocumentRequest;
 use App\Http\Resources\DocumentResource;
+use http\Exception;
 use Tymon\JWTAuth\Contracts\Providers\Auth;
 
 use Illuminate\Http\Request;
@@ -48,16 +49,16 @@ class DocumentController extends Controller
      */
     public function store(StoreDocumentRequest $request)
     {
-//        $authUser = $this->auth->user();
         $this->authorize('create',Document::class);
 
-        $documentPath = $request->file('document')->store('uploads/documents', 'public');
-        $document = Document::create([
-            'project_id' => $request->project_id,
-            'name' => $request->file('document')->getClientOriginalName(),
-            'description' => $request->description,
-            'document' => $documentPath,
-        ]);
+            $documentPath = $request->file('document')->store('uploads/documents', 'public');
+
+            $document = Document::create([
+                'project_id' => $request->project_id,
+                'name' => $request->file('document')->getClientOriginalName(),
+                'description' => $request->description,
+                'document' => $documentPath,
+            ]);
 
         return response()->json([
                 'code' => 200,

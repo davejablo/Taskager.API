@@ -52,7 +52,6 @@ class UserProfileSeeder extends Seeder
                 $user->profile()->save(factory(App\UserProfile::class)->make());
                 $user->roles()->attach(3);
                 $user->project()->associate($this->current);
-//                $user->tasks()->saveMany(factory(App\Task::class, rand(1,4))->make());
                 $user->save();
             });
         }

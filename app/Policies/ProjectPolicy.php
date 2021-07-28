@@ -102,7 +102,7 @@ class ProjectPolicy
 //     * @return mixed
 //     */
     /**
-     * @param User $user
+     * @param User $userp
      * @return bool
      */
     public function delete(User $user)

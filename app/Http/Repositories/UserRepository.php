@@ -49,7 +49,7 @@ class UserRepository
     }
 
     public function getUserProject(User $user){
-        return $userProject = $user->user()->firstOrFail();
+        return $userProject = $user->project()->firstOrFail();
     }
 
     public function getUserTasks(User $user){

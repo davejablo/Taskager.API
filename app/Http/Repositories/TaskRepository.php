@@ -22,6 +22,8 @@ class TaskRepository implements TaskRepositoryInterface
             if ($hours){
                 $newTask->task_cost = $hours * $foundUser->hr_wage;
                 $newTask->status = 'done';
+                $newTask->done_at = now();
+                $newTask->is_done = true;
                 $newTask->save();
             }
             else

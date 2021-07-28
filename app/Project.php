@@ -32,8 +32,12 @@ class Project extends Model
         return $this->tasks()->first() ? true : false;
     }
 
+    public function hasAnyDocuments(){
+        return $this->documents()->first() ? true : false;
+    }
+
     public function hasAnyRelations(){
-        return ($this->hasAnyTasks() || $this->hasAnyUsers()) ? true : false;
+        return ($this->hasAnyTasks() || $this->hasAnyUsers() || $this->hasAnyDocuments()) ? true : false;
     }
 
     public function doneTasksBetweenDate($request)

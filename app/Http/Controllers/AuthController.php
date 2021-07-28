@@ -120,7 +120,7 @@ class AuthController extends Controller
             'message' => 'Successfully logged in :3',
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 6000
         ], 200);
     }
 }
